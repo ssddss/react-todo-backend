@@ -23,9 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-3glgkai#2ax95@cbkqnmqkb9*#xe6&$#yh_fz!-#%^9e@b_cw5"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['derrickyrd.pythonanywhere.com']
+CORS_ORIGIN_WHITELIST = ['https://cozy-twilight-be206a.netlify.app',
+]
+# ALLOWED_HOSTS = []
+# whitelisted localhost:3000 which is our frontend. 
+# CORS_ORIGIN_WHITELIST = [ 'http://localhost:3000',
+# ]
 
 
 # Application definition
@@ -79,13 +85,22 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+# for production
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'derrickyrd$mytodoapp',
+        'USER': 'derrickyrd',
+        'PASSWORD': 'de123456789',
+        'HOST': 'derrickyrd.mysql.pythonanywhere-services.com',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -134,6 +149,4 @@ REST_FRAMEWORK = {
     ]
 }
 
-# whitelisted localhost:3000 which is our frontend. 
-CORS_ORIGIN_WHITELIST = [ 'http://localhost:3000',
-]
+
